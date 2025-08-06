@@ -1,0 +1,137 @@
+{
+  "info": {
+    "name": "Facturación Electrónica SV - API Tests",
+    "description": "Colección de pruebas para la API de Facturación Electrónica",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:3000"
+    }
+  ],
+  "item": [
+    {
+      "name": "1. Health Check",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/",
+          "host": ["{{baseUrl}}"]
+        }
+      }
+    },
+    {
+      "name": "2. Swagger Documentation",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api",
+          "host": ["{{baseUrl}}"],
+          "path": ["api"]
+        }
+      }
+    },
+    {
+      "name": "FE - Obtener Ejemplo",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/dte/fe/ejemplo",
+          "host": ["{{baseUrl}}"],
+          "path": ["dte", "fe", "ejemplo"]
+        }
+      }
+    },
+    {
+      "name": "FE - Validar Datos",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"identificacion\": {\n    \"version\": 1,\n    \"ambiente\": \"00\",\n    \"tipoDte\": \"01\",\n    \"numeroControl\": \"DTE-01-00000001-000000000000001\",\n    \"tipoModelo\": 1,\n    \"tipoOperacion\": 1,\n    \"fecEmi\": \"2024-07-16\",\n    \"horEmi\": \"10:30:00\",\n    \"tipoMoneda\": \"USD\"\n  },\n  \"emisor\": {\n    \"nit\": \"02101601014\",\n    \"nrc\": \"240372-1\",\n    \"nombre\": \"EMPRESA EJEMPLO S.A. DE C.V.\",\n    \"codActividad\": \"62020\",\n    \"descActividad\": \"Consultoría en informática\",\n    \"nombreComercial\": \"EMPRESA EJEMPLO\",\n    \"tipoEstablecimiento\": \"01\",\n    \"direccion\": {\n      \"departamento\": \"06\",\n      \"municipio\": \"01\",\n      \"complemento\": \"Colonia Escalón, Avenida Norte #123\"\n    },\n    \"telefono\": \"2234-5678\",\n    \"correo\": \"facturacion@empresaejemplo.com\"\n  },\n  \"receptor\": {\n    \"tipoDocumento\": \"36\",\n    \"numDocumento\": \"02101601015\",\n    \"nombre\": \"CLIENTE EJEMPLO S.A. DE C.V.\",\n    \"direccion\": {\n      \"departamento\": \"06\",\n      \"municipio\": \"01\",\n      \"complemento\": \"Colonia San Benito, Calle Principal #456\"\n    }\n  },\n  \"cuerpoDocumento\": [\n    {\n      \"numItem\": 1,\n      \"tipoItem\": 2,\n      \"cantidad\": 1,\n      \"uniMedida\": 1,\n      \"descripcion\": \"Servicio de consultoría en sistemas\",\n      \"precioUni\": 100.00,\n      \"montoDescu\": 0.00,\n      \"ventaNoSuj\": 0.00,\n      \"ventaExenta\": 0.00,\n      \"ventaGravada\": 100.00\n    }\n  ],\n  \"resumen\": {\n    \"totalNoSuj\": 0.00,\n    \"totalExenta\": 0.00,\n    \"totalGravada\": 100.00,\n    \"subTotalVentas\": 100.00,\n    \"descuNoSuj\": 0.00,\n    \"descuExenta\": 0.00,\n    \"descuGravada\": 0.00,\n    \"porcentajeDescuento\": 0.00,\n    \"totalDescu\": 0.00,\n    \"tributos\": [\n      {\n        \"codigo\": \"20\",\n        \"descripcion\": \"Impuesto al Valor Agregado 13%\",\n        \"valor\": 13.00\n      }\n    ],\n    \"subTotal\": 100.00,\n    \"ivaPerci1\": 0.00,\n    \"ivaRete1\": 0.00,\n    \"reteRenta\": 0.00,\n    \"montoTotalOperacion\": 113.00,\n    \"totalNoGravado\": 0.00,\n    \"totalPagar\": 113.00,\n    \"totalLetras\": \"CIENTO TRECE 00/100 DÓLARES\",\n    \"saldoFavor\": 0.00,\n    \"condicionOperacion\": 1\n  }\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/dte/fe/validar",
+          "host": ["{{baseUrl}}"],
+          "path": ["dte", "fe", "validar"]
+        }
+      }
+    },
+    {
+      "name": "CCF - Obtener Ejemplo",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/dte/ccf/ejemplo",
+          "host": ["{{baseUrl}}"],
+          "path": ["dte", "ccf", "ejemplo"]
+        }
+      }
+    },
+    {
+      "name": "CCF - Validar Datos",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"identificacion\": {\n    \"version\": 1,\n    \"ambiente\": \"00\",\n    \"tipoDte\": \"03\",\n    \"numeroControl\": \"DTE-03-00000001-000000000000001\",\n    \"tipoModelo\": 1,\n    \"tipoOperacion\": 1,\n    \"fecEmi\": \"2024-07-16\",\n    \"horEmi\": \"10:30:00\",\n    \"tipoMoneda\": \"USD\"\n  },\n  \"emisor\": {\n    \"nit\": \"02101601014\",\n    \"nrc\": \"240372-1\",\n    \"nombre\": \"EMPRESA EJEMPLO S.A. DE C.V.\",\n    \"codActividad\": \"62020\",\n    \"descActividad\": \"Consultoría en informática\",\n    \"nombreComercial\": \"EMPRESA EJEMPLO\",\n    \"tipoEstablecimiento\": \"01\",\n    \"direccion\": {\n      \"departamento\": \"06\",\n      \"municipio\": \"01\",\n      \"complemento\": \"Colonia Escalón, Avenida Norte #123\"\n    },\n    \"telefono\": \"2234-5678\",\n    \"correo\": \"facturacion@empresaejemplo.com\"\n  },\n  \"receptor\": {\n    \"tipoDocumento\": \"36\",\n    \"numDocumento\": \"02101601015\",\n    \"nombre\": \"CLIENTE EJEMPLO S.A. DE C.V.\",\n    \"direccion\": {\n      \"departamento\": \"06\",\n      \"municipio\": \"01\",\n      \"complemento\": \"Colonia San Benito, Calle Principal #456\"\n    }\n  },\n  \"cuerpoDocumento\": [\n    {\n      \"numItem\": 1,\n      \"tipoItem\": 2,\n      \"cantidad\": 1,\n      \"uniMedida\": 1,\n      \"descripcion\": \"Servicio de consultoría en sistemas\",\n      \"precioUni\": 100.00,\n      \"montoDescu\": 0.00,\n      \"ventaNoSuj\": 0.00,\n      \"ventaExenta\": 0.00,\n      \"ventaGravada\": 100.00,\n      \"psv\": 0.00,\n      \"noGravado\": 0.00\n    }\n  ],\n  \"resumen\": {\n    \"totalNoSuj\": 0.00,\n    \"totalExenta\": 0.00,\n    \"totalGravada\": 100.00,\n    \"subTotalVentas\": 100.00,\n    \"descuNoSuj\": 0.00,\n    \"descuExenta\": 0.00,\n    \"descuGravada\": 0.00,\n    \"porcentajeDescuento\": 0.00,\n    \"totalDescu\": 0.00,\n    \"tributos\": [\n      {\n        \"codigo\": \"20\",\n        \"descripcion\": \"Impuesto al Valor Agregado 13%\",\n        \"valor\": 13.00\n      }\n    ],\n    \"subTotal\": 100.00,\n    \"ivaPerci1\": 0.00,\n    \"ivaRete1\": 0.00,\n    \"reteRenta\": 0.00,\n    \"montoTotalOperacion\": 113.00,\n    \"totalNoGravado\": 0.00,\n    \"totalPagar\": 113.00,\n    \"totalLetras\": \"CIENTO TRECE 00/100 DÓLARES\",\n    \"saldoFavor\": 0.00,\n    \"condicionOperacion\": 1\n  }\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/dte/ccf/validar",
+          "host": ["{{baseUrl}}"],
+          "path": ["dte", "ccf", "validar"]
+        }
+      }
+    },
+    {
+      "name": "NC - Obtener Ejemplo",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/dte/nc/ejemplo",
+          "host": ["{{baseUrl}}"],
+          "path": ["dte", "nc", "ejemplo"]
+        }
+      }
+    },
+    {
+      "name": "NC - Validar Datos",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"identificacion\": {\n    \"version\": 1,\n    \"ambiente\": \"00\",\n    \"tipoDte\": \"05\",\n    \"numeroControl\": \"DTE-05-00000001-000000000000001\",\n    \"tipoModelo\": 1,\n    \"tipoOperacion\": 1,\n    \"fecEmi\": \"2024-07-16\",\n    \"horEmi\": \"10:30:00\",\n    \"tipoMoneda\": \"USD\"\n  },\n  \"documentoRelacionado\": [\n    {\n      \"tipoDocumento\": \"01\",\n      \"tipoGeneracion\": 1,\n      \"numeroDocumento\": \"DTE-01-0001-0001-000000000000001\",\n      \"fechaEmision\": \"2024-07-16\"\n    }\n  ],\n  \"emisor\": {\n    \"nit\": \"02101601014\",\n    \"nrc\": \"240372-1\",\n    \"nombre\": \"EMPRESA EJEMPLO S.A. DE C.V.\",\n    \"codActividad\": \"62020\",\n    \"descActividad\": \"Consultoría en informática\",\n    \"nombreComercial\": \"EMPRESA EJEMPLO\",\n    \"tipoEstablecimiento\": \"01\",\n    \"direccion\": {\n      \"departamento\": \"06\",\n      \"municipio\": \"01\",\n      \"complemento\": \"Colonia Escalón, Avenida Norte #123\"\n    },\n    \"telefono\": \"2234-5678\",\n    \"correo\": \"facturacion@empresaejemplo.com\"\n  },\n  \"receptor\": {\n    \"tipoDocumento\": \"36\",\n    \"numDocumento\": \"02101601015\",\n    \"nombre\": \"CLIENTE EJEMPLO S.A. DE C.V.\",\n    \"direccion\": {\n      \"departamento\": \"06\",\n      \"municipio\": \"01\",\n      \"complemento\": \"Colonia San Benito, Calle Principal #456\"\n    }\n  },\n  \"cuerpoDocumento\": [\n    {\n      \"numItem\": 1,\n      \"tipoItem\": 2,\n      \"descripcion\": \"Devolución por servicio de consultoría\",\n      \"cantidad\": 1,\n      \"uniMedida\": 1,\n      \"precioUni\": 50.00,\n      \"montoDescu\": 0.00,\n      \"ventaNoSuj\": 0.00,\n      \"ventaExenta\": 0.00,\n      \"ventaGravada\": 50.00\n    }\n  ],\n  \"resumen\": {\n    \"totalNoSuj\": 0.00,\n    \"totalExenta\": 0.00,\n    \"totalGravada\": 50.00,\n    \"subTotalVentas\": 50.00,\n    \"descuNoSuj\": 0.00,\n    \"descuExenta\": 0.00,\n    \"descuGravada\": 0.00,\n    \"totalDescu\": 0.00,\n    \"tributos\": [\n      {\n        \"codigo\": \"20\",\n        \"descripcion\": \"Impuesto al Valor Agregado 13%\",\n        \"valor\": 6.50\n      }\n    ],\n    \"subTotal\": 50.00,\n    \"ivaPerci1\": 0.00,\n    \"ivaRete1\": 0.00,\n    \"reteRenta\": 0.00,\n    \"montoTotalOperacion\": 56.50,\n    \"totalLetras\": \"CINCUENTA Y SEIS 50/100 DÓLARES\",\n    \"condicionOperacion\": 1\n  }\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/dte/nc/validar",
+          "host": ["{{baseUrl}}"],
+          "path": ["dte", "nc", "validar"]
+        }
+      }
+    }
+  ]
+}

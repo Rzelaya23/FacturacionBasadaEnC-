@@ -1,0 +1,9 @@
+C:\Users\Mario Valdez\source\repos\UI\FacturacionElectronica\Utilidades\bin\Release\Utilidades.dll
+C:\Users\Mario Valdez\source\repos\UI\FacturacionElectronica\Utilidades\bin\Release\Utilidades.pdb
+C:\Users\Mario Valdez\source\repos\UI\FacturacionElectronica\Utilidades\bin\Release\log4net.dll
+C:\Users\Mario Valdez\source\repos\UI\FacturacionElectronica\Utilidades\bin\Release\log4net.xml
+C:\Users\Mario Valdez\source\repos\UI\FacturacionElectronica\Utilidades\obj\Release\Utilidades.csproj.AssemblyReference.cache
+C:\Users\Mario Valdez\source\repos\UI\FacturacionElectronica\Utilidades\obj\Release\Utilidades.csproj.CoreCompileInputs.cache
+C:\Users\Mario Valdez\source\repos\UI\FacturacionElectronica\Utilidades\obj\Release\Utilidades.csproj.CopyComplete
+C:\Users\Mario Valdez\source\repos\UI\FacturacionElectronica\Utilidades\obj\Release\Utilidades.dll
+C:\Users\Mario Valdez\source\repos\UI\FacturacionElectronica\Utilidades\obj\Release\Utilidades.pdb

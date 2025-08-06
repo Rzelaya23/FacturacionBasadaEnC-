@@ -1,0 +1,843 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AddOnRegData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" SlientInstallation="No" SlientUpgrade="No" Partnernmsp="AL" SchemaVersion="3.0" Type="" MultipleVersion="false" OnDemand="" OnPremise="" ExtName="FacturacionElectronica" ExtVersion="1.23" Contdata="" Partner="ALSASA" DBType="MSSQL" ClientType="W">
+  <Validity>
+    <SBOCompatibility>
+      <Version From="9.1" To="9.3" />
+    </SBOCompatibility>
+  </Validity>
+  <Configuration>
+    <Repository>
+      <Properties />
+    </Repository>
+    <Deployment>
+      <Properties />
+    </Deployment>
+    <Assignment>
+      <Properties />
+    </Assignment>
+  </Configuration>
+  <Addons>
+    <Addon Name="" Group="" ForceFlag="" Visible="" AutoAssign="" SelfUpgrd="">
+      <x86 AddonExe="C:\Compilaciones VS\Ejecutables\x86\FacturacionElectronica(x86)\FacturacionElectronica86.exe" AddonSig="">
+        <Installation>
+          <Files>
+            <File FileName="ConexionSapApp86.dll">
+              <Actions />
+            </File>
+            <File FileName="ConexionSapApp86.dll.config">
+              <Actions />
+            </File>
+            <File FileName="ConsumoAPI86.dll">
+              <Actions />
+            </File>
+            <File FileName="ConsumoAPI86.dll.config">
+              <Actions />
+            </File>
+            <File FileName="CrystalDecisions.CrystalReports.Engine.dll">
+              <Actions />
+            </File>
+            <File FileName="CrystalDecisions.ReportAppServer.ClientDoc.dll">
+              <Actions />
+            </File>
+            <File FileName="CrystalDecisions.ReportAppServer.CommLayer.dll">
+              <Actions />
+            </File>
+            <File FileName="CrystalDecisions.ReportAppServer.CommonControls.dll">
+              <Actions />
+            </File>
+            <File FileName="CrystalDecisions.ReportAppServer.CommonObjectModel.dll">
+              <Actions />
+            </File>
+            <File FileName="CrystalDecisions.ReportAppServer.Controllers.dll">
+              <Actions />
+            </File>
+            <File FileName="CrystalDecisions.ReportAppServer.CubeDefModel.dll">
+              <Actions />
+            </File>
+            <File FileName="CrystalDecisions.ReportAppServer.DataDefModel.dll">
+              <Actions />
+            </File>
+            <File FileName="CrystalDecisions.ReportAppServer.DataSetConversion.dll">
+              <Actions />
+            </File>
+            <File FileName="CrystalDecisions.ReportAppServer.ObjectFactory.dll">
+              <Actions />
+            </File>
+            <File FileName="CrystalDecisions.ReportAppServer.Prompting.dll">
+              <Actions />
+            </File>
+            <File FileName="CrystalDecisions.ReportAppServer.ReportDefModel.dll">
+              <Actions />
+            </File>
+            <File FileName="CrystalDecisions.ReportAppServer.XmlSerialize.dll">
+              <Actions />
+            </File>
+            <File FileName="CrystalDecisions.Shared.dll">
+              <Actions />
+            </File>
+            <File FileName="FacturacionElectronica86.b1s">
+              <Actions />
+            </File>
+            <File FileName="FacturacionElectronica86.exe">
+              <Actions />
+            </File>
+            <File FileName="FacturacionElectronica86.exe.config">
+              <Actions />
+            </File>
+            <File FileName="log4net.dll">
+              <Actions />
+            </File>
+            <File FileName="log4net.xml">
+              <Actions />
+            </File>
+            <File FileName="Microsoft.Bcl.AsyncInterfaces.dll">
+              <Actions />
+            </File>
+            <File FileName="Microsoft.Bcl.AsyncInterfaces.xml">
+              <Actions />
+            </File>
+            <File FileName="Newtonsoft.Json.dll">
+              <Actions />
+            </File>
+            <File FileName="Newtonsoft.Json.xml">
+              <Actions />
+            </File>
+            <File FileName="RestSharp.dll">
+              <Actions />
+            </File>
+            <File FileName="RestSharp.xml">
+              <Actions />
+            </File>
+            <File FileName="SAPBusinessOneSDK.dll">
+              <Actions />
+            </File>
+            <File FileName="stdole.dll">
+              <Actions />
+            </File>
+            <File FileName="System.Buffers.dll">
+              <Actions />
+            </File>
+            <File FileName="System.Buffers.xml">
+              <Actions />
+            </File>
+            <File FileName="System.Memory.dll">
+              <Actions />
+            </File>
+            <File FileName="System.Memory.xml">
+              <Actions />
+            </File>
+            <File FileName="System.Numerics.Vectors.dll">
+              <Actions />
+            </File>
+            <File FileName="System.Numerics.Vectors.xml">
+              <Actions />
+            </File>
+            <File FileName="System.Runtime.CompilerServices.Unsafe.dll">
+              <Actions />
+            </File>
+            <File FileName="System.Runtime.CompilerServices.Unsafe.xml">
+              <Actions />
+            </File>
+            <File FileName="System.Text.Encodings.Web.dll">
+              <Actions />
+            </File>
+            <File FileName="System.Text.Encodings.Web.xml">
+              <Actions />
+            </File>
+            <File FileName="System.Text.Json.dll">
+              <Actions />
+            </File>
+            <File FileName="System.Text.Json.xml">
+              <Actions />
+            </File>
+            <File FileName="System.Threading.Tasks.Extensions.dll">
+              <Actions />
+            </File>
+            <File FileName="System.Threading.Tasks.Extensions.xml">
+              <Actions />
+            </File>
+            <File FileName="System.ValueTuple.dll">
+              <Actions />
+            </File>
+            <File FileName="System.ValueTuple.xml">
+              <Actions />
+            </File>
+            <File FileName="Utilidades86.dll">
+              <Actions />
+            </File>
+            <File FileName="formXML\EAformularioAnulacionDTE.xml">
+              <Actions />
+            </File>
+            <File FileName="formXML\EAformularioContiDTE.xml">
+              <Actions />
+            </File>
+            <File FileName="formXML\EAformularioCorreo_DTE.xml">
+              <Actions />
+            </File>
+            <File FileName="formXML\EAformularioDB_DTE.xml">
+              <Actions />
+            </File>
+            <File FileName="formXML\EAformularioEnvioContiDTE.xml">
+              <Actions />
+            </File>
+            <File FileName="formXML\EAformularioLoteDTE.xml">
+              <Actions />
+            </File>
+            <File FileName="formXML\MVformularioEmisorDTE.xml">
+              <Actions />
+            </File>
+            <File FileName="Reportes\DocRelacionadosNC.rpt">
+              <Actions />
+            </File>
+            <File FileName="Reportes\DocRelacionadosND.rpt">
+              <Actions />
+            </File>
+            <File FileName="Reportes\DTE_CCF.rpt">
+              <Actions />
+            </File>
+            <File FileName="Reportes\DTE_CCF_SP.rpt">
+              <Actions />
+            </File>
+            <File FileName="Reportes\DTE_FE.rpt">
+              <Actions />
+            </File>
+            <File FileName="Reportes\DTE_FEX_EN.rpt">
+              <Actions />
+            </File>
+            <File FileName="Reportes\DTE_FEX_ES.rpt">
+              <Actions />
+            </File>
+            <File FileName="Reportes\DTE_FSE.rpt">
+              <Actions />
+            </File>
+            <File FileName="Reportes\DTE_NC.rpt">
+              <Actions />
+            </File>
+            <File FileName="Reportes\DTE_ND.rpt">
+              <Actions />
+            </File>
+            <File FileName="Reportes\DTE_NR.rpt">
+              <Actions />
+            </File>
+          </Files>
+        </Installation>
+        <Uninstallation>
+          <Files>
+            <File FileName="ConexionSapApp86.dll">
+              <Actions />
+            </File>
+            <File FileName="ConexionSapApp86.dll.config">
+              <Actions />
+            </File>
+            <File FileName="ConsumoAPI86.dll">
+              <Actions />
+            </File>
+            <File FileName="ConsumoAPI86.dll.config">
+              <Actions />
+            </File>
+            <File FileName="CrystalDecisions.CrystalReports.Engine.dll">
+              <Actions />
+            </File>
+            <File FileName="CrystalDecisions.ReportAppServer.ClientDoc.dll">
+              <Actions />
+            </File>
+            <File FileName="CrystalDecisions.ReportAppServer.CommLayer.dll">
+              <Actions />
+            </File>
+            <File FileName="CrystalDecisions.ReportAppServer.CommonControls.dll">
+              <Actions />
+            </File>
+            <File FileName="CrystalDecisions.ReportAppServer.CommonObjectModel.dll">
+              <Actions />
+            </File>
+            <File FileName="CrystalDecisions.ReportAppServer.Controllers.dll">
+              <Actions />
+            </File>
+            <File FileName="CrystalDecisions.ReportAppServer.CubeDefModel.dll">
+              <Actions />
+            </File>
+            <File FileName="CrystalDecisions.ReportAppServer.DataDefModel.dll">
+              <Actions />
+            </File>
+            <File FileName="CrystalDecisions.ReportAppServer.DataSetConversion.dll">
+              <Actions />
+            </File>
+            <File FileName="CrystalDecisions.ReportAppServer.ObjectFactory.dll">
+              <Actions />
+            </File>
+            <File FileName="CrystalDecisions.ReportAppServer.Prompting.dll">
+              <Actions />
+            </File>
+            <File FileName="CrystalDecisions.ReportAppServer.ReportDefModel.dll">
+              <Actions />
+            </File>
+            <File FileName="CrystalDecisions.ReportAppServer.XmlSerialize.dll">
+              <Actions />
+            </File>
+            <File FileName="CrystalDecisions.Shared.dll">
+              <Actions />
+            </File>
+            <File FileName="FacturacionElectronica86.b1s">
+              <Actions />
+            </File>
+            <File FileName="FacturacionElectronica86.exe">
+              <Actions />
+            </File>
+            <File FileName="FacturacionElectronica86.exe.config">
+              <Actions />
+            </File>
+            <File FileName="log4net.dll">
+              <Actions />
+            </File>
+            <File FileName="log4net.xml">
+              <Actions />
+            </File>
+            <File FileName="Microsoft.Bcl.AsyncInterfaces.dll">
+              <Actions />
+            </File>
+            <File FileName="Microsoft.Bcl.AsyncInterfaces.xml">
+              <Actions />
+            </File>
+            <File FileName="Newtonsoft.Json.dll">
+              <Actions />
+            </File>
+            <File FileName="Newtonsoft.Json.xml">
+              <Actions />
+            </File>
+            <File FileName="RestSharp.dll">
+              <Actions />
+            </File>
+            <File FileName="RestSharp.xml">
+              <Actions />
+            </File>
+            <File FileName="SAPBusinessOneSDK.dll">
+              <Actions />
+            </File>
+            <File FileName="stdole.dll">
+              <Actions />
+            </File>
+            <File FileName="System.Buffers.dll">
+              <Actions />
+            </File>
+            <File FileName="System.Buffers.xml">
+              <Actions />
+            </File>
+            <File FileName="System.Memory.dll">
+              <Actions />
+            </File>
+            <File FileName="System.Memory.xml">
+              <Actions />
+            </File>
+            <File FileName="System.Numerics.Vectors.dll">
+              <Actions />
+            </File>
+            <File FileName="System.Numerics.Vectors.xml">
+              <Actions />
+            </File>
+            <File FileName="System.Runtime.CompilerServices.Unsafe.dll">
+              <Actions />
+            </File>
+            <File FileName="System.Runtime.CompilerServices.Unsafe.xml">
+              <Actions />
+            </File>
+            <File FileName="System.Text.Encodings.Web.dll">
+              <Actions />
+            </File>
+            <File FileName="System.Text.Encodings.Web.xml">
+              <Actions />
+            </File>
+            <File FileName="System.Text.Json.dll">
+              <Actions />
+            </File>
+            <File FileName="System.Text.Json.xml">
+              <Actions />
+            </File>
+            <File FileName="System.Threading.Tasks.Extensions.dll">
+              <Actions />
+            </File>
+            <File FileName="System.Threading.Tasks.Extensions.xml">
+              <Actions />
+            </File>
+            <File FileName="System.ValueTuple.dll">
+              <Actions />
+            </File>
+            <File FileName="System.ValueTuple.xml">
+              <Actions />
+            </File>
+            <File FileName="Utilidades86.dll">
+              <Actions />
+            </File>
+            <File FileName="formXML\EAformularioAnulacionDTE.xml">
+              <Actions />
+            </File>
+            <File FileName="formXML\EAformularioContiDTE.xml">
+              <Actions />
+            </File>
+            <File FileName="formXML\EAformularioCorreo_DTE.xml">
+              <Actions />
+            </File>
+            <File FileName="formXML\EAformularioDB_DTE.xml">
+              <Actions />
+            </File>
+            <File FileName="formXML\EAformularioEnvioContiDTE.xml">
+              <Actions />
+            </File>
+            <File FileName="formXML\EAformularioLoteDTE.xml">
+              <Actions />
+            </File>
+            <File FileName="formXML\MVformularioEmisorDTE.xml">
+              <Actions />
+            </File>
+            <File FileName="Reportes\DocRelacionadosNC.rpt">
+              <Actions />
+            </File>
+            <File FileName="Reportes\DocRelacionadosND.rpt">
+              <Actions />
+            </File>
+            <File FileName="Reportes\DTE_CCF.rpt">
+              <Actions />
+            </File>
+            <File FileName="Reportes\DTE_CCF_SP.rpt">
+              <Actions />
+            </File>
+            <File FileName="Reportes\DTE_FE.rpt">
+              <Actions />
+            </File>
+            <File FileName="Reportes\DTE_FEX_EN.rpt">
+              <Actions />
+            </File>
+            <File FileName="Reportes\DTE_FEX_ES.rpt">
+              <Actions />
+            </File>
+            <File FileName="Reportes\DTE_FSE.rpt">
+              <Actions />
+            </File>
+            <File FileName="Reportes\DTE_NC.rpt">
+              <Actions />
+            </File>
+            <File FileName="Reportes\DTE_ND.rpt">
+              <Actions />
+            </File>
+            <File FileName="Reportes\DTE_NR.rpt">
+              <Actions />
+            </File>
+          </Files>
+        </Uninstallation>
+      </x86>
+      <x64 AddonExe="C:\Compilaciones VS\Ejecutables\x64\FacturacionElectronica\FacturacionElectronica.exe" AddonSig="">
+        <Installation>
+          <Files>
+            <File FileName="ConexionSapApp.dll">
+              <Actions />
+            </File>
+            <File FileName="ConexionSapApp.dll.config">
+              <Actions />
+            </File>
+            <File FileName="ConsumoAPI.dll">
+              <Actions />
+            </File>
+            <File FileName="ConsumoAPI.dll.config">
+              <Actions />
+            </File>
+            <File FileName="CrystalDecisions.CrystalReports.Engine.dll">
+              <Actions />
+            </File>
+            <File FileName="CrystalDecisions.ReportAppServer.ClientDoc.dll">
+              <Actions />
+            </File>
+            <File FileName="CrystalDecisions.ReportAppServer.CommLayer.dll">
+              <Actions />
+            </File>
+            <File FileName="CrystalDecisions.ReportAppServer.CommonControls.dll">
+              <Actions />
+            </File>
+            <File FileName="CrystalDecisions.ReportAppServer.CommonObjectModel.dll">
+              <Actions />
+            </File>
+            <File FileName="CrystalDecisions.ReportAppServer.Controllers.dll">
+              <Actions />
+            </File>
+            <File FileName="CrystalDecisions.ReportAppServer.CubeDefModel.dll">
+              <Actions />
+            </File>
+            <File FileName="CrystalDecisions.ReportAppServer.DataDefModel.dll">
+              <Actions />
+            </File>
+            <File FileName="CrystalDecisions.ReportAppServer.DataSetConversion.dll">
+              <Actions />
+            </File>
+            <File FileName="CrystalDecisions.ReportAppServer.ObjectFactory.dll">
+              <Actions />
+            </File>
+            <File FileName="CrystalDecisions.ReportAppServer.Prompting.dll">
+              <Actions />
+            </File>
+            <File FileName="CrystalDecisions.ReportAppServer.ReportDefModel.dll">
+              <Actions />
+            </File>
+            <File FileName="CrystalDecisions.ReportAppServer.XmlSerialize.dll">
+              <Actions />
+            </File>
+            <File FileName="CrystalDecisions.Shared.dll">
+              <Actions />
+            </File>
+            <File FileName="FacturacionElectronica.b1s">
+              <Actions />
+            </File>
+            <File FileName="FacturacionElectronica.exe">
+              <Actions />
+            </File>
+            <File FileName="FacturacionElectronica.exe.config">
+              <Actions />
+            </File>
+            <File FileName="log4net.dll">
+              <Actions />
+            </File>
+            <File FileName="log4net.xml">
+              <Actions />
+            </File>
+            <File FileName="Microsoft.Bcl.AsyncInterfaces.dll">
+              <Actions />
+            </File>
+            <File FileName="Microsoft.Bcl.AsyncInterfaces.xml">
+              <Actions />
+            </File>
+            <File FileName="Newtonsoft.Json.dll">
+              <Actions />
+            </File>
+            <File FileName="Newtonsoft.Json.xml">
+              <Actions />
+            </File>
+            <File FileName="RestSharp.dll">
+              <Actions />
+            </File>
+            <File FileName="RestSharp.xml">
+              <Actions />
+            </File>
+            <File FileName="SAPBusinessOneSDK.dll">
+              <Actions />
+            </File>
+            <File FileName="stdole.dll">
+              <Actions />
+            </File>
+            <File FileName="System.Buffers.dll">
+              <Actions />
+            </File>
+            <File FileName="System.Buffers.xml">
+              <Actions />
+            </File>
+            <File FileName="System.Memory.dll">
+              <Actions />
+            </File>
+            <File FileName="System.Memory.xml">
+              <Actions />
+            </File>
+            <File FileName="System.Numerics.Vectors.dll">
+              <Actions />
+            </File>
+            <File FileName="System.Numerics.Vectors.xml">
+              <Actions />
+            </File>
+            <File FileName="System.Runtime.CompilerServices.Unsafe.dll">
+              <Actions />
+            </File>
+            <File FileName="System.Runtime.CompilerServices.Unsafe.xml">
+              <Actions />
+            </File>
+            <File FileName="System.Text.Encodings.Web.dll">
+              <Actions />
+            </File>
+            <File FileName="System.Text.Encodings.Web.xml">
+              <Actions />
+            </File>
+            <File FileName="System.Text.Json.dll">
+              <Actions />
+            </File>
+            <File FileName="System.Text.Json.xml">
+              <Actions />
+            </File>
+            <File FileName="System.Threading.Tasks.Extensions.dll">
+              <Actions />
+            </File>
+            <File FileName="System.Threading.Tasks.Extensions.xml">
+              <Actions />
+            </File>
+            <File FileName="System.ValueTuple.dll">
+              <Actions />
+            </File>
+            <File FileName="System.ValueTuple.xml">
+              <Actions />
+            </File>
+            <File FileName="Utilidades.dll">
+              <Actions />
+            </File>
+            <File FileName="formXML\EAformularioAnulacionDTE.xml">
+              <Actions />
+            </File>
+            <File FileName="formXML\EAformularioContiDTE.xml">
+              <Actions />
+            </File>
+            <File FileName="formXML\EAformularioCorreo_DTE.xml">
+              <Actions />
+            </File>
+            <File FileName="formXML\EAformularioDB_DTE.xml">
+              <Actions />
+            </File>
+            <File FileName="formXML\EAformularioEnvioContiDTE.xml">
+              <Actions />
+            </File>
+            <File FileName="formXML\EAformularioLoteDTE.xml">
+              <Actions />
+            </File>
+            <File FileName="formXML\MVformularioEmisorDTE.xml">
+              <Actions />
+            </File>
+            <File FileName="Reportes\DocRelacionadosNC.rpt">
+              <Actions />
+            </File>
+            <File FileName="Reportes\DocRelacionadosND.rpt">
+              <Actions />
+            </File>
+            <File FileName="Reportes\DTE_CCF.rpt">
+              <Actions />
+            </File>
+            <File FileName="Reportes\DTE_CCF_SP.rpt">
+              <Actions />
+            </File>
+            <File FileName="Reportes\DTE_FE.rpt">
+              <Actions />
+            </File>
+            <File FileName="Reportes\DTE_FEX_EN.rpt">
+              <Actions />
+            </File>
+            <File FileName="Reportes\DTE_FEX_ES.rpt">
+              <Actions />
+            </File>
+            <File FileName="Reportes\DTE_FSE.rpt">
+              <Actions />
+            </File>
+            <File FileName="Reportes\DTE_NC.rpt">
+              <Actions />
+            </File>
+            <File FileName="Reportes\DTE_ND.rpt">
+              <Actions />
+            </File>
+            <File FileName="Reportes\DTE_NR.rpt">
+              <Actions />
+            </File>
+          </Files>
+        </Installation>
+        <Uninstallation>
+          <Files>
+            <File FileName="ConexionSapApp.dll">
+              <Actions />
+            </File>
+            <File FileName="ConexionSapApp.dll.config">
+              <Actions />
+            </File>
+            <File FileName="ConsumoAPI.dll">
+              <Actions />
+            </File>
+            <File FileName="ConsumoAPI.dll.config">
+              <Actions />
+            </File>
+            <File FileName="CrystalDecisions.CrystalReports.Engine.dll">
+              <Actions />
+            </File>
+            <File FileName="CrystalDecisions.ReportAppServer.ClientDoc.dll">
+              <Actions />
+            </File>
+            <File FileName="CrystalDecisions.ReportAppServer.CommLayer.dll">
+              <Actions />
+            </File>
+            <File FileName="CrystalDecisions.ReportAppServer.CommonControls.dll">
+              <Actions />
+            </File>
+            <File FileName="CrystalDecisions.ReportAppServer.CommonObjectModel.dll">
+              <Actions />
+            </File>
+            <File FileName="CrystalDecisions.ReportAppServer.Controllers.dll">
+              <Actions />
+            </File>
+            <File FileName="CrystalDecisions.ReportAppServer.CubeDefModel.dll">
+              <Actions />
+            </File>
+            <File FileName="CrystalDecisions.ReportAppServer.DataDefModel.dll">
+              <Actions />
+            </File>
+            <File FileName="CrystalDecisions.ReportAppServer.DataSetConversion.dll">
+              <Actions />
+            </File>
+            <File FileName="CrystalDecisions.ReportAppServer.ObjectFactory.dll">
+              <Actions />
+            </File>
+            <File FileName="CrystalDecisions.ReportAppServer.Prompting.dll">
+              <Actions />
+            </File>
+            <File FileName="CrystalDecisions.ReportAppServer.ReportDefModel.dll">
+              <Actions />
+            </File>
+            <File FileName="CrystalDecisions.ReportAppServer.XmlSerialize.dll">
+              <Actions />
+            </File>
+            <File FileName="CrystalDecisions.Shared.dll">
+              <Actions />
+            </File>
+            <File FileName="FacturacionElectronica.b1s">
+              <Actions />
+            </File>
+            <File FileName="FacturacionElectronica.exe">
+              <Actions />
+            </File>
+            <File FileName="FacturacionElectronica.exe.config">
+              <Actions />
+            </File>
+            <File FileName="log4net.dll">
+              <Actions />
+            </File>
+            <File FileName="log4net.xml">
+              <Actions />
+            </File>
+            <File FileName="Microsoft.Bcl.AsyncInterfaces.dll">
+              <Actions />
+            </File>
+            <File FileName="Microsoft.Bcl.AsyncInterfaces.xml">
+              <Actions />
+            </File>
+            <File FileName="Newtonsoft.Json.dll">
+              <Actions />
+            </File>
+            <File FileName="Newtonsoft.Json.xml">
+              <Actions />
+            </File>
+            <File FileName="RestSharp.dll">
+              <Actions />
+            </File>
+            <File FileName="RestSharp.xml">
+              <Actions />
+            </File>
+            <File FileName="SAPBusinessOneSDK.dll">
+              <Actions />
+            </File>
+            <File FileName="stdole.dll">
+              <Actions />
+            </File>
+            <File FileName="System.Buffers.dll">
+              <Actions />
+            </File>
+            <File FileName="System.Buffers.xml">
+              <Actions />
+            </File>
+            <File FileName="System.Memory.dll">
+              <Actions />
+            </File>
+            <File FileName="System.Memory.xml">
+              <Actions />
+            </File>
+            <File FileName="System.Numerics.Vectors.dll">
+              <Actions />
+            </File>
+            <File FileName="System.Numerics.Vectors.xml">
+              <Actions />
+            </File>
+            <File FileName="System.Runtime.CompilerServices.Unsafe.dll">
+              <Actions />
+            </File>
+            <File FileName="System.Runtime.CompilerServices.Unsafe.xml">
+              <Actions />
+            </File>
+            <File FileName="System.Text.Encodings.Web.dll">
+              <Actions />
+            </File>
+            <File FileName="System.Text.Encodings.Web.xml">
+              <Actions />
+            </File>
+            <File FileName="System.Text.Json.dll">
+              <Actions />
+            </File>
+            <File FileName="System.Text.Json.xml">
+              <Actions />
+            </File>
+            <File FileName="System.Threading.Tasks.Extensions.dll">
+              <Actions />
+            </File>
+            <File FileName="System.Threading.Tasks.Extensions.xml">
+              <Actions />
+            </File>
+            <File FileName="System.ValueTuple.dll">
+              <Actions />
+            </File>
+            <File FileName="System.ValueTuple.xml">
+              <Actions />
+            </File>
+            <File FileName="Utilidades.dll">
+              <Actions />
+            </File>
+            <File FileName="formXML\EAformularioAnulacionDTE.xml">
+              <Actions />
+            </File>
+            <File FileName="formXML\EAformularioContiDTE.xml">
+              <Actions />
+            </File>
+            <File FileName="formXML\EAformularioCorreo_DTE.xml">
+              <Actions />
+            </File>
+            <File FileName="formXML\EAformularioDB_DTE.xml">
+              <Actions />
+            </File>
+            <File FileName="formXML\EAformularioEnvioContiDTE.xml">
+              <Actions />
+            </File>
+            <File FileName="formXML\EAformularioLoteDTE.xml">
+              <Actions />
+            </File>
+            <File FileName="formXML\MVformularioEmisorDTE.xml">
+              <Actions />
+            </File>
+            <File FileName="Reportes\DocRelacionadosNC.rpt">
+              <Actions />
+            </File>
+            <File FileName="Reportes\DocRelacionadosND.rpt">
+              <Actions />
+            </File>
+            <File FileName="Reportes\DTE_CCF.rpt">
+              <Actions />
+            </File>
+            <File FileName="Reportes\DTE_CCF_SP.rpt">
+              <Actions />
+            </File>
+            <File FileName="Reportes\DTE_FE.rpt">
+              <Actions />
+            </File>
+            <File FileName="Reportes\DTE_FEX_EN.rpt">
+              <Actions />
+            </File>
+            <File FileName="Reportes\DTE_FEX_ES.rpt">
+              <Actions />
+            </File>
+            <File FileName="Reportes\DTE_FSE.rpt">
+              <Actions />
+            </File>
+            <File FileName="Reportes\DTE_NC.rpt">
+              <Actions />
+            </File>
+            <File FileName="Reportes\DTE_ND.rpt">
+              <Actions />
+            </File>
+            <File FileName="Reportes\DTE_NR.rpt">
+              <Actions />
+            </File>
+          </Files>
+        </Uninstallation>
+      </x64>
+    </Addon>
+  </Addons>
+  <XApps>
+    <XApp Name="" Path="" FileName="" />
+  </XApps>
+  <UDQs>
+    <UDQ udqname="">
+      <Hana FileName="" />
+    </UDQ>
+  </UDQs>
+</AddOnRegData>

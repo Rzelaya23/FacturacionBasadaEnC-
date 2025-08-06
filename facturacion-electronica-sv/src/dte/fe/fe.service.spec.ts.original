@@ -1,0 +1,509 @@
+import { Test, TestingModule } from '@nestjs/testing';
+import { BadRequestException } from '@nestjs/common';
+import { FeService } from './fe.service';
+import { CodigoGeneracionService } from '../../common/services/codigo-generacion.service';
+import { MhIntegrationService } from '../../mh-integration/mh-integration.service';
+import { FirmadorService } from '../../firmador/firmador.service';
+import { CreateFacturaElectronicaDto } from './dto/create-factura-electronica.dto';
+
+describe('FeService', () => {
+  let service: FeService;
+  let codigoGeneracionService: CodigoGeneracionService;
+  let mhIntegrationService: MhIntegrationService;
+  let firmadorService: FirmadorService;
+
+  const mockCodigoGeneracionService = {
+    generateIdentificacionCompleta: jest.fn(),
+    generateCodigoGeneracion: jest.fn(),
+    generateNumeroControl: jest.fn(),
+    generateFechaHoraEmision: jest.fn(),
+  };
+
+  const mockMhIntegrationService = {
+    enviarDTE: jest.fn(),
+    autenticar: jest.fn(),
+  };
+
+  const mockFirmadorService = {
+    firmarDocumento: jest.fn(),
+  };
+
+  beforeEach(async () => {
+    const module: TestingModule = await Test.createTestingModule({
+      providers: [
+        FeService,
+        {
+          provide: CodigoGeneracionService,
+          useValue: mockCodigoGeneracionService,
+        },
+        {
+          provide: MhIntegrationService,
+          useValue: mockMhIntegrationService,
+        },
+        {
+          provide: FirmadorService,
+          useValue: mockFirmadorService,
+        },
+      ],
+    }).compile();
+
+    service = module.get<FeService>(FeService);
+    codigoGeneracionService = module.get<CodigoGeneracionService>(CodigoGeneracionService);
+    mhIntegrationService = module.get<MhIntegrationService>(MhIntegrationService);
+    firmadorService = module.get<FirmadorService>(FirmadorService);
+  });
+
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+
+  it('should be defined', () => {
+    expect(service).toBeDefined();
+  });
+
+  describe('crear', () => {
+    const validFeDto: CreateFacturaElectronicaDto = {
+      identificacion: {
+        version: 1,
+        ambiente: '00',
+        tipoDte: '01',
+        numeroControl: 'DTE-01-00000001-000000000000001',
+        codigoGeneracion: '12345678-1234-1234-1234-123456789012',
+        tipoModelo: 1,
+        tipoOperacion: 1,
+        tipoContingencia: null,
+        motivoContin: null,
+        fecEmi: '2024-08-04',
+        horEmi: '10:30:00',
+        tipoMoneda: 'USD'
+      },
+      emisor: {
+        nit: '06142803901121',
+        nrc: '1234567',
+        nombre: 'EMPRESA DE PRUEBA S.A. DE C.V.',
+        codActividad: '01111',
+        descActividad: 'Cultivo de maíz',
+        nombreComercial: 'EMPRESA PRUEBA',
+        tipoEstablecimiento: '01',
+        direccion: {
+          departamento: '06',
+          municipio: '14',
+          complemento: 'COLONIA ESCALON, CALLE PRINCIPAL #123'
+        },
+        telefono: '22501234',
+        correo: 'empresa@prueba.com'
+      },
+      receptor: {
+        tipoDocumento: '36',
+        numDocumento: '12345678901234',
+        nrc: '7654321',
+        nombre: 'CLIENTE DE PRUEBA',
+        codActividad: '01111',
+        descActividad: 'Cultivo de maíz',
+        direccion: {
+          departamento: '06',
+          municipio: '14',
+          complemento: 'COLONIA MIRAMONTE, AVENIDA PRINCIPAL #456'
+        },
+        telefono: '22509876',
+        correo: 'cliente@prueba.com'
+      },
+      cuerpoDocumento: [
+        {
+          numItem: 1,
+          tipoItem: 2,
+          numeroDocumento: null,
+          cantidad: 10,
+          codigo: 'PROD001',
+          codTributo: null,
+          uniMedida: 59,
+          descripcion: 'PRODUCTO DE PRUEBA',
+          precioUni: 5.75,
+          montoDescu: 0,
+          ventaNoSuj: 0,
+          ventaExenta: 0,
+          ventaGravada: 57.50,
+          tributos: ['20'],
+          psv: 5.75,
+          noGravado: 0,
+          ivaItem: 7.48
+        }
+      ],
+      resumen: {
+        totalNoSuj: 0,
+        totalExenta: 0,
+        totalGravada: 57.50,
+        subTotalVentas: 57.50,
+        descuNoSuj: 0,
+        descuExenta: 0,
+        descuGravada: 0,
+        porcentajeDescuento: 0,
+        totalDescu: 0,
+        tributos: [
+          {
+            codigo: '20',
+            descripcion: 'Impuesto al Valor Agregado 13%',
+            valor: 7.48
+          }
+        ],
+        subTotal: 57.50,
+        ivaRete1: 0,
+        reteRenta: 0,
+        montoTotalOperacion: 64.98,
+        totalNoGravado: 0,
+        totalPagar: 64.98,
+        totalLetras: 'SESENTA Y CUATRO 98/100 DÓLARES',
+        totalIva: 7.48,
+        saldoFavor: 0,
+        condicionOperacion: 1,
+        pagos: [
+          {
+            codigo: '01',
+            montoPago: 64.98,
+            referencia: 'EFECTIVO',
+            plazo: '01',
+            periodo: 0
+          }
+        ],
+        numPagoElectronico: null
+      },
+      extension: {
+        nombEntrega: 'Juan Pérez',
+        docuEntrega: '12345678-9',
+        nombRecibe: 'María García',
+        docuRecibe: '98765432-1',
+        observaciones: 'Entrega en horario de oficina'
+      }
+    };
+
+    beforeEach(() => {
+      mockCodigoGeneracionService.generateIdentificacionCompleta.mockReturnValue({
+        version: 1,
+        ambiente: '00',
+        tipoDte: '01',
+        numeroControl: 'DTE-01-0001-0001-000000000000001',
+        codigoGeneracion: 'A1B2C3D4-E5F6-7890-ABCD-123456789012',
+        tipoModelo: 1,
+        tipoOperacion: 1,
+        fecEmi: '2024-08-04',
+        horEmi: '10:30:00',
+        tipoMoneda: 'USD'
+      });
+
+      mockFirmadorService.firmarDocumento.mockResolvedValue({
+        body: 'documento_firmado_base64',
+        status: 'OK'
+      });
+
+      mockMhIntegrationService.enviarDTE.mockResolvedValue({
+        selloRecibido: 'SELLO123456789',
+        estado: 'PROCESADO',
+        descripcionMsg: 'DTE procesado correctamente'
+      });
+    });
+
+    it('should create FE successfully', async () => {
+      const result = await service.create(validFeDto);
+
+      expect(result).toMatchObject({
+        success: true,
+        codigoGeneracion: 'A1B2C3D4-E5F6-7890-ABCD-123456789012',
+        numeroControl: 'DTE-01-0001-0001-000000000000001',
+        selloRecibido: 'SELLO123456789'
+      });
+
+      expect(mockCodigoGeneracionService.generateIdentificacionCompleta).toHaveBeenCalledWith('01');
+      expect(mockFirmadorService.firmarDocumento).toHaveBeenCalled();
+      expect(mockMhIntegrationService.enviarDTE).toHaveBeenCalled();
+    });
+
+    it('should throw BadRequestException for invalid emisor NIT', async () => {
+      const invalidDto = {
+        ...validFeDto,
+        emisor: {
+          ...validFeDto.emisor,
+          nit: 'invalid-nit'
+        }
+      };
+
+      await expect(service.create(invalidDto)).rejects.toThrow(BadRequestException);
+    });
+
+    it('should validate cuerpoDocumento calculations', async () => {
+      const invalidDto = {
+        ...validFeDto,
+        cuerpoDocumento: [
+          {
+            ...validFeDto.cuerpoDocumento[0],
+            ventaGravada: 100, // No coincide con cantidad * precioUni
+          }
+        ]
+      };
+
+      await expect(service.create(invalidDto)).rejects.toThrow(BadRequestException);
+    });
+
+    it('should validate resumen totals', async () => {
+      const invalidDto = {
+        ...validFeDto,
+        resumen: {
+          ...validFeDto.resumen,
+          totalPagar: 999, // No coincide con los cálculos
+        }
+      };
+
+      await expect(service.create(invalidDto)).rejects.toThrow(BadRequestException);
+    });
+
+    it('should handle firmador service errors', async () => {
+      mockFirmadorService.firmarDocumento.mockRejectedValue(new Error('Firmador no disponible'));
+
+      await expect(service.create(validFeDto)).rejects.toThrow('Error en el proceso de firmado');
+    });
+
+    it('should handle MH integration errors', async () => {
+      mockMhIntegrationService.enviarDTE.mockRejectedValue(new Error('MH no disponible'));
+
+      await expect(service.create(validFeDto)).rejects.toThrow('Error al enviar al Ministerio de Hacienda');
+    });
+  });
+
+  describe('validar', () => {
+    it('should validate FE structure successfully', async () => {
+      const validDto: CreateFacturaElectronicaDto = {
+        emisor: {
+          nit: '06142803901121',
+          nrc: '1234567',
+          nombre: 'EMPRESA DE PRUEBA S.A. DE C.V.',
+          codActividad: '01111',
+          descActividad: 'Cultivo de maíz',
+          nombreComercial: 'EMPRESA PRUEBA',
+          tipoEstablecimiento: '01',
+          direccion: {
+            departamento: '06',
+            municipio: '14',
+            complemento: 'COLONIA ESCALON, CALLE PRINCIPAL #123'
+          },
+          telefono: '22501234',
+          correo: 'empresa@prueba.com'
+        },
+        receptor: {
+          tipoDocumento: '36',
+          numDocumento: '12345678901234',
+          nrc: '7654321',
+          nombre: 'CLIENTE DE PRUEBA',
+          codActividad: '01111',
+          descActividad: 'Cultivo de maíz',
+          direccion: {
+            departamento: '06',
+            municipio: '14',
+            complemento: 'COLONIA MIRAMONTE, AVENIDA PRINCIPAL #456'
+          },
+          telefono: '22509876',
+          correo: 'cliente@prueba.com'
+        },
+        cuerpoDocumento: [
+          {
+            numItem: 1,
+            tipoItem: 2,
+            numeroDocumento: null,
+            cantidad: 1,
+            codigo: 'PROD001',
+            codTributo: null,
+            uniMedida: 59,
+            descripcion: 'PRODUCTO DE PRUEBA',
+            precioUni: 10.00,
+            montoDescu: 0,
+            ventaNoSuj: 0,
+            ventaExenta: 0,
+            ventaGravada: 10.00,
+            tributos: ['20']
+          }
+        ],
+        resumen: {
+          totalNoSuj: 0,
+          totalExenta: 0,
+          totalGravada: 10.00,
+          subTotalVentas: 10.00,
+          descuNoSuj: 0,
+          descuExenta: 0,
+          descuGravada: 0,
+          porcentajeDescuento: 0,
+          totalDescu: 0,
+          tributos: [
+            {
+              codigo: '20',
+              descripcion: 'Impuesto al Valor Agregado 13%',
+              valor: 1.30
+            }
+          ],
+          subTotal: 10.00,
+          ivaRete1: 0,
+          reteRenta: 0,
+          montoTotalOperacion: 11.30,
+          totalNoGravado: 0,
+          totalPagar: 11.30,
+          totalLetras: 'ONCE 30/100 DÓLARES',
+          totalIva: 1.30,
+          saldoFavor: 0,
+          condicionOperacion: 1,
+          pagos: [
+            {
+              codigo: '01',
+              montoPago: 11.30,
+              referencia: 'EFECTIVO',
+              plazo: '01',
+              periodo: 0
+            }
+          ],
+          numPagoElectronico: null
+        }
+      };
+
+      const result = await service.validate(validDto);
+
+      expect(result).toMatchObject({
+        valido: true,
+        errores: []
+      });
+    });
+
+    it('should detect validation errors', async () => {
+      const invalidDto = {
+        emisor: {
+          nit: '', // NIT vacío
+          nombre: 'EMPRESA'
+        },
+        receptor: {
+          tipoDocumento: '99', // Tipo documento inválido
+          nombre: 'CLIENTE'
+        },
+        cuerpoDocumento: [], // Sin items
+        resumen: {
+          totalPagar: -100 // Monto negativo
+        }
+      } as any;
+
+      const result = await service.validate(invalidDto);
+
+      expect(result.valido).toBe(false);
+      expect(result.errores.length).toBeGreaterThan(0);
+    });
+  });
+
+  describe('C# compatibility tests', () => {
+    it('should generate JSON structure compatible with C# JSONFE class', async () => {
+      // Basado en el análisis de FacturacionElectronica/Utilidades/JsonFE/JSONFE.cs
+      const validDto: CreateFacturaElectronicaDto = {
+        emisor: {
+          nit: '06142803901121',
+          nrc: '1234567',
+          nombre: 'EMPRESA DE PRUEBA S.A. DE C.V.',
+          codActividad: '01111',
+          descActividad: 'Cultivo de maíz',
+          nombreComercial: 'EMPRESA PRUEBA',
+          tipoEstablecimiento: '01',
+          direccion: {
+            departamento: '06',
+            municipio: '14',
+            complemento: 'COLONIA ESCALON, CALLE PRINCIPAL #123'
+          },
+          telefono: '22501234',
+          correo: 'empresa@prueba.com'
+        },
+        receptor: {
+          tipoDocumento: '36',
+          numDocumento: '12345678901234',
+          nrc: '7654321',
+          nombre: 'CLIENTE DE PRUEBA',
+          codActividad: '01111',
+          descActividad: 'Cultivo de maíz',
+          direccion: {
+            departamento: '06',
+            municipio: '14',
+            complemento: 'COLONIA MIRAMONTE, AVENIDA PRINCIPAL #456'
+          },
+          telefono: '22509876',
+          correo: 'cliente@prueba.com'
+        },
+        cuerpoDocumento: [
+          {
+            numItem: 1,
+            tipoItem: 2,
+            numeroDocumento: null,
+            cantidad: 1,
+            codigo: 'PROD001',
+            codTributo: null,
+            uniMedida: 59,
+            descripcion: 'PRODUCTO DE PRUEBA',
+            precioUni: 10.00,
+            montoDescu: 0,
+            ventaNoSuj: 0,
+            ventaExenta: 0,
+            ventaGravada: 10.00,
+            tributos: ['20']
+          }
+        ],
+        resumen: {
+          totalNoSuj: 0,
+          totalExenta: 0,
+          totalGravada: 10.00,
+          subTotalVentas: 10.00,
+          descuNoSuj: 0,
+          descuExenta: 0,
+          descuGravada: 0,
+          porcentajeDescuento: 0,
+          totalDescu: 0,
+          tributos: [
+            {
+              codigo: '20',
+              descripcion: 'Impuesto al Valor Agregado 13%',
+              valor: 1.30
+            }
+          ],
+          subTotal: 10.00,
+          ivaRete1: 0,
+          reteRenta: 0,
+          montoTotalOperacion: 11.30,
+          totalNoGravado: 0,
+          totalPagar: 11.30,
+          totalLetras: 'ONCE 30/100 DÓLARES',
+          totalIva: 1.30,
+          saldoFavor: 0,
+          condicionOperacion: 1,
+          pagos: [
+            {
+              codigo: '01',
+              montoPago: 11.30,
+              referencia: 'EFECTIVO',
+              plazo: '01',
+              periodo: 0
+            }
+          ],
+          numPagoElectronico: null
+        }
+      };
+
+      const result = await service.create(validDto);
+
+      // Verificar que la estructura generada es compatible con C# JSONFE
+      expect(result.documentoJson).toBeDefined();
+      
+      const documento = JSON.parse(result.documentoJson);
+      
+      // Verificar estructura principal (basada en JSONFE.cs)
+      expect(documento).toHaveProperty('identificacion');
+      expect(documento).toHaveProperty('emisor');
+      expect(documento).toHaveProperty('receptor');
+      expect(documento).toHaveProperty('cuerpoDocumento');
+      expect(documento).toHaveProperty('resumen');
+      expect(documento).toHaveProperty('extension');
+      
+      // Verificar tipos de datos compatibles
+      expect(Array.isArray(documento.cuerpoDocumento)).toBe(true);
+      expect(typeof documento.emisor).toBe('object');
+      expect(typeof documento.receptor).toBe('object');
+      expect(typeof documento.resumen).toBe('object');
+    });
+  });
+});

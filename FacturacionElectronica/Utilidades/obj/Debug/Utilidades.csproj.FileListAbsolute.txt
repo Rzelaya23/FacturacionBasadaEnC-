@@ -1,0 +1,16 @@
+C:\Users\Mario Valdez\source\repos\UI\FacturacionElectronica\Utilidades\bin\Debug\Utilidades.dll
+C:\Users\Mario Valdez\source\repos\UI\FacturacionElectronica\Utilidades\bin\Debug\Utilidades.pdb
+C:\Users\Mario Valdez\source\repos\UI\FacturacionElectronica\Utilidades\bin\Debug\log4net.dll
+C:\Users\Mario Valdez\source\repos\UI\FacturacionElectronica\Utilidades\bin\Debug\log4net.xml
+C:\Users\Mario Valdez\source\repos\UI\FacturacionElectronica\Utilidades\obj\Debug\Utilidades.csproj.CoreCompileInputs.cache
+C:\Users\Mario Valdez\source\repos\UI\FacturacionElectronica\Utilidades\obj\Debug\Utilidades.csproj.CopyComplete
+C:\Users\Mario Valdez\source\repos\UI\FacturacionElectronica\Utilidades\obj\Debug\Utilidades.dll
+C:\Users\Mario Valdez\source\repos\UI\FacturacionElectronica\Utilidades\obj\Debug\Utilidades.pdb
+C:\Users\pc gamer\source\repos\UI\FacturacionElectronica\Utilidades\bin\Debug\Utilidades86.dll
+C:\Users\pc gamer\source\repos\UI\FacturacionElectronica\Utilidades\bin\Debug\Utilidades86.pdb
+C:\Users\pc gamer\source\repos\UI\FacturacionElectronica\Utilidades\bin\Debug\log4net.dll
+C:\Users\pc gamer\source\repos\UI\FacturacionElectronica\Utilidades\bin\Debug\log4net.xml
+C:\Users\pc gamer\source\repos\UI\FacturacionElectronica\Utilidades\obj\Debug\Utilidades.csproj.CoreCompileInputs.cache
+C:\Users\pc gamer\source\repos\UI\FacturacionElectronica\Utilidades\obj\Debug\Utilidades.csproj.CopyComplete
+C:\Users\pc gamer\source\repos\UI\FacturacionElectronica\Utilidades\obj\Debug\Utilidades86.dll
+C:\Users\pc gamer\source\repos\UI\FacturacionElectronica\Utilidades\obj\Debug\Utilidades86.pdb
