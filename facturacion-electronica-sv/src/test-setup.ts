@@ -13,7 +13,7 @@ global.console = {
 };
 
 // Global test utilities
-global.testUtils = {
+(global as any).testUtils = {
   // Helper para crear DTOs de prueba válidos
   createValidFeDto: () => ({
     emisor: {
@@ -149,6 +149,7 @@ global.testUtils = {
 
 // Extend global types
 declare global {
+  const testUtils: any; // para que TypeScript reconozca el símbolo global
   namespace NodeJS {
     interface Global {
       testUtils: any;

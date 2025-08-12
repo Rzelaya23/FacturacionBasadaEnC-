@@ -70,12 +70,14 @@ npm run start:dev
 
 ### **Variables de Entorno Necesarias:**
 ```bash
-# Base de datos
+# Base de datos (PostgreSQL)
 DB_HOST=localhost
 DB_PORT=5432
 DB_USERNAME=postgres
 DB_PASSWORD=password
+# Se aceptan DB_DATABASE o DB_NAME (DB_DATABASE tiene prioridad)
 DB_DATABASE=facturacion_electronica
+DB_NAME=facturacion_electronica
 
 # Ministerio de Hacienda
 MH_BASE_URL=https://apitest.dtes.mh.gob.sv/fesv/
@@ -89,9 +91,7 @@ FIRMADOR_TOKEN=tu-token
 
 ## 📚 **DOCUMENTACIÓN**
 
-- **[README Principal](facturacion-electronica-sv/README.md)** - Documentación completa del sistema
-- **[Guía de Testing](facturacion-electronica-sv/README_TESTING.md)** - Cómo ejecutar tests
-- **[Estado Fase 1](facturacion-electronica-sv/FASE_1_COMPLETADA.md)** - Progreso del proyecto
+- **[Documento Final](facturacion-electronica-sv/README_FINAL.md)** - Documentación completa y consolidada
 
 ## 🤝 **CONTRIBUCIÓN**
 

@@ -30,6 +30,22 @@ describe('MhIntegrationService', () => {
   };
 
   beforeEach(async () => {
+    // reset default config implementation for each test
+    mockConfigService.get.mockImplementation((key: string) => {
+      const config = {
+        'MH_ENVIRONMENT': 'test',
+        'MH_USER': 'test_user',
+        'MH_PASSWORD': 'test_password',
+        'MH_AUTH_URL_TEST': 'https://apitest.dtes.mh.gob.sv/seguridad/auth',
+        'MH_RECEPTION_URL_TEST': 'https://apitest.dtes.mh.gob.sv/fesv/recepciondte',
+        'MH_CANCELLATION_URL_TEST': 'https://apitest.dtes.mh.gob.sv/fesv/anulardte',
+        'MH_AUTH_URL_PROD': 'https://api.dtes.mh.gob.sv/seguridad/auth',
+        'MH_RECEPTION_URL_PROD': 'https://api.dtes.mh.gob.sv/fesv/recepciondte',
+        'MH_CANCELLATION_URL_PROD': 'https://api.dtes.mh.gob.sv/fesv/anulardte',
+      } as any;
+      return config[key];
+    });
+    delete process.env.MH_ENVIRONMENT;
     const module: TestingModule = await Test.createTestingModule({
       providers: [
         MhIntegrationService,
@@ -82,9 +98,22 @@ describe('MhIntegrationService', () => {
     });
 
     it('should authenticate successfully in production environment', async () => {
+      // Preferir seteo vía process.env para evitar recursión de jest mock
+      // force production in config mock
       mockConfigService.get.mockImplementation((key: string) => {
         if (key === 'MH_ENVIRONMENT') return 'production';
-        return mockConfigService.get(key);
+        const cfg = {
+          'MH_ENVIRONMENT': 'test',
+          'MH_USER': 'test_user',
+          'MH_PASSWORD': 'test_password',
+          'MH_AUTH_URL_TEST': 'https://apitest.dtes.mh.gob.sv/seguridad/auth',
+          'MH_RECEPTION_URL_TEST': 'https://apitest.dtes.mh.gob.sv/fesv/recepciondte',
+          'MH_CANCELLATION_URL_TEST': 'https://apitest.dtes.mh.gob.sv/fesv/anulardte',
+          'MH_AUTH_URL_PROD': 'https://api.dtes.mh.gob.sv/seguridad/auth',
+          'MH_RECEPTION_URL_PROD': 'https://api.dtes.mh.gob.sv/fesv/recepciondte',
+          'MH_CANCELLATION_URL_PROD': 'https://api.dtes.mh.gob.sv/fesv/anulardte',
+        } as any;
+        return cfg[key];
       });
 
       const mockAuthResponse = {

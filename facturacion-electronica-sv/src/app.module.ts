@@ -1,8 +1,14 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { APP_FILTER, APP_INTERCEPTOR } from '@nestjs/core';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+
+// Optimization modules
+import { OptimizationModule } from './common/modules/optimization.module';
+import { GlobalExceptionFilter } from './common/filters/global-exception.filter';
+import { LoggingInterceptor } from './common/interceptors/logging.interceptor';
 
 // Módulos de la aplicación
 import { AuthModule } from './auth/auth.module';
@@ -34,9 +40,9 @@ import { CommonModule } from './common/common.module';
         port: configService.get<number>('DB_PORT', 5432),
         username: configService.get<string>('DB_USERNAME', 'root'),
         password: configService.get<string>('DB_PASSWORD', ''),
-        database: configService.get<string>('DB_NAME', 'facturacion_electronica'),
+        database: configService.get<string>('DB_DATABASE', configService.get<string>('DB_NAME', 'facturacion_electronica')), // soporta DB_DATABASE o DB_NAME
         entities: [__dirname + '/**/*.entity{.ts,.js}'],
-        synchronize: false, // Deshabilitado temporalmente
+        synchronize: false, // No crear tablas automáticamente (usamos SQL scripts)
         logging: configService.get('NODE_ENV') === 'development',
         timezone: 'Z',
       }),
@@ -55,8 +61,23 @@ import { CommonModule } from './common/common.module';
     ContingenciaModule,
     LotesModule,
     ReportsModule,
+    
+    // Módulo de optimización
+    OptimizationModule,
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [
+    AppService,
+    // Global Exception Filter
+    {
+      provide: APP_FILTER,
+      useClass: GlobalExceptionFilter,
+    },
+    // Global Logging Interceptor
+    {
+      provide: APP_INTERCEPTOR,
+      useClass: LoggingInterceptor,
+    },
+  ],
 })
 export class AppModule {}

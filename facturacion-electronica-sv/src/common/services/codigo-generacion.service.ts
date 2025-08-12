@@ -41,9 +41,16 @@ export class CodigoGeneracionService {
    * Esto asegura unicidad temporal
    */
   private generateCorrelativo(): number {
-    const timestamp = Date.now();
-    const random = Math.floor(Math.random() * 1000);
-    return timestamp * 1000 + random;
+    // Generar correlativo de exactamente 15 dígitos
+    // Tomamos un timestamp en ms y nos aseguramos de que el resultado tenga longitud 15
+    const base = Date.now().toString();
+    // Si el timestamp supera 15 dígitos, tomamos los últimos 15
+    let correlativoStr = base.length > 15 ? base.slice(-15) : base;
+    // Si es menor a 15, completamos con aleatorios al final
+    while (correlativoStr.length < 15) {
+      correlativoStr += Math.floor(Math.random() * 10).toString();
+    }
+    return Number(correlativoStr);
   }
 
   /**
@@ -90,13 +97,15 @@ export class CodigoGeneracionService {
    */
   generateFechaHoraEmision(): { fecEmi: string; horEmi: string } {
     const now = new Date();
-    
-    // Fecha en formato YYYY-MM-DD
-    const fecEmi = now.toISOString().split('T')[0];
-    
-    // Hora en formato HH:mm:ss
-    const horEmi = now.toTimeString().split(' ')[0];
-    
+    // Usar hora local para evitar desfaces entre UTC/local en tests
+    const y = now.getFullYear();
+    const m = String(now.getMonth() + 1).padStart(2, '0');
+    const d = String(now.getDate()).padStart(2, '0');
+    const hh = String(now.getHours()).padStart(2, '0');
+    const mm = String(now.getMinutes()).padStart(2, '0');
+    const ss = String(now.getSeconds()).padStart(2, '0');
+    const fecEmi = `${y}-${m}-${d}`;
+    const horEmi = `${hh}:${mm}:${ss}`;
     return { fecEmi, horEmi };
   }
 

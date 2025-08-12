@@ -39,7 +39,7 @@ test_endpoint "GET" "/" "Endpoint raíz"
 
 # Test de documentación Swagger
 echo ""
-echo "📚 Documentación Swagger disponible en: $BASE_URL/api"
+echo "📚 Documentación Swagger disponible en: $BASE_URL/api/docs"
 
 echo ""
 echo "2️⃣ PROBANDO FACTURA ELECTRÓNICA (FE)"
@@ -168,7 +168,7 @@ echo "   - CCF: Comprobante Crédito Fiscal ✅"
 echo "   - NC: Nota de Crédito ✅"
 echo "   - Catálogos: Funcionando internamente ✅"
 echo ""
-echo "🌐 Para más pruebas, visita: $BASE_URL/api (Swagger UI)"
+echo "🌐 Para más pruebas, visita: $BASE_URL/api/docs (Swagger UI)"
 echo ""
 echo "⚠️  NOTA: Los endpoints de firma y envío al MH requieren:"
 echo "   - Servicio de firmado en puerto 8113"

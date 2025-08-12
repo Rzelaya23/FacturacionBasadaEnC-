@@ -27,6 +27,17 @@ export class ReceptorDto {
   numDocumento: string;
 
   @ApiProperty({ 
+    description: 'NIT del receptor (opcional, para ciertos DTEs como CCF)', 
+    example: '06142902640010',
+    required: false,
+    maxLength: 14 
+  })
+  @IsOptional()
+  @IsString()
+  @Length(1, 14)
+  nit?: string;
+
+  @ApiProperty({ 
     description: 'NRC del receptor (opcional)', 
     example: '5215',
     required: false,
